@@ -1,0 +1,29 @@
+<?php
+
+
+namespace app\components;
+
+/**
+ */
+class Security
+{
+    /**
+     * Genarate password
+     */
+    public function generatePasswordHash($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    /**
+     * Method  check  password
+     */
+    public function validatePasswordHash($password, $hash)
+    {
+        if (password_verify($password, $hash)) {
+            return true;
+        }
+
+        return false;
+    }
+}
