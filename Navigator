@@ -1,0 +1,22 @@
+<?php
+class Navigator 
+{ 
+
+ public function page($k_page=1){ // Выдает текущую страницу
+     global $Filter;
+
+
+  $page=1;
+  if ($Filter->clearInt(isset($_GET['p']))){
+  if ($_GET['p']=='e')$page=intval($k_page);elseif($Filter->clearInt($_GET['p'])) $page=$Filter->clearInt($_GET['p']);}
+  if ($page<1)$page=1;
+  if ($page>$k_page)$page=$k_page;
+  return $page;
+}
+public function k_page($k_post=0,$k_p_str=10){ // Высчитывает количество страниц
+  if ($k_post!=0) {$v_pages=ceil($k_post/$k_p_str);return $v_pages;}
+  else return 1;
+}
+
+
+}
